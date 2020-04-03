@@ -6,18 +6,18 @@ Very simple monad Maybe library written in c-sharp.
 
 Create Monad from:
 ```c#
-	Maybe.Of("Hello")
+	Maybe<string>.Of("Hello")
 ```
 
 Return value or another element
 ```c#
-	var result = Maybe.Of("Hello")
+	var result = Maybe<string>.Of("Hello")
 			    .ValueOr(() => "bye");
 ```
 
 Simple string tokenizer
 ```c#
-	var result = Maybe.Of("Hello")
+	var result = Maybe<string>.Of("Hello")
 			    .Bind<List<string>> (y => y.Split(' ').ToList<string>())
 			    .ValueOr(new List<string>());
 ```
