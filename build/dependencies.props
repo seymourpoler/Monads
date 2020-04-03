@@ -1,0 +1,28 @@
+<Project>
+  <PropertyGroup Label="SDK Versions">
+    <NetCoreTargetVersion>netcoreapp3.1</NetCoreTargetVersion>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions">
+  </PropertyGroup>
+
+  <PropertyGroup Label="CLI Tools Versions">
+  </PropertyGroup>
+
+ <PropertyGroup Label="Tests Package Versions">
+<ShouldlyPackageVersion>3.0.2</ShouldlyPackageVersion>
+<XunitPackageVersion>2.4.1</XunitPackageVersion>
+<XunitRunnerVisualstudioPackageVersion>2.4.1</XunitRunnerVisualstudioPackageVersion>
+<MicrosoftNETTestSdkPackageVersion>16.5.0</MicrosoftNETTestSdkPackageVersion>
+  </PropertyGroup>
+
+
+  <PropertyGroup Label="Package information">
+    <PackageLicenseUrl>https://github.com/seymourpoler/Monads/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/seymourpoler/Monads</RepositoryUrl>
+    <Authors>Seymour Poler</Authors>
+    <Company>SeymourPoler</Company>
+  </PropertyGroup>
+</Project>
