@@ -1,0 +1,9 @@
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/bin/Debug/netcoreapp3.1/Monad.Maybe.deps.json
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/bin/Debug/netcoreapp3.1/Monad.Maybe.dll
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/bin/Debug/netcoreapp3.1/Monad.Maybe.pdb
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.csprojAssemblyReference.cache
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.csproj.CoreCompileInputs.cache
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.AssemblyInfoInputs.cache
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.AssemblyInfo.cs
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.dll
+/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/Debug/netcoreapp3.1/Monad.Maybe.pdb

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Monad.Maybe/1.0.0": {
+        "runtime": {
+          "Monad.Maybe.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Monad.Maybe/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
