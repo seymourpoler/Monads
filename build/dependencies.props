@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="SDK Versions">
-    <NetCoreTargetVersion>netcoreapp3.1</NetCoreTargetVersion>
+    <TargetFrameworkVersion>netcoreapp3.1</TargetFrameworkVersion>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
