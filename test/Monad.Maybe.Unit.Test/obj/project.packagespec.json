@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/seymourpoler/Documents/code/dotnet/Monads/test/Monad.Maybe.Unit.Test/Monad.Maybe.Unit.Test.csproj",
+    "projectUniqueName": "/home/seymourpoler/Documents/code/GitHub/Monads/test/Monad.Maybe.Unit.Test/Monad.Maybe.Unit.Test.csproj",
     "projectName": "Monad.Maybe.Unit.Test",
-    "projectPath": "/home/seymourpoler/Documents/code/dotnet/Monads/test/Monad.Maybe.Unit.Test/Monad.Maybe.Unit.Test.csproj",
-    "outputPath": "/home/seymourpoler/Documents/code/dotnet/Monads/test/Monad.Maybe.Unit.Test/obj/",
+    "projectPath": "/home/seymourpoler/Documents/code/GitHub/Monads/test/Monad.Maybe.Unit.Test/Monad.Maybe.Unit.Test.csproj",
+    "outputPath": "/home/seymourpoler/Documents/code/GitHub/Monads/test/Monad.Maybe.Unit.Test/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -18,8 +18,8 @@
     "frameworks": {
       "netcoreapp3.1": {
         "projectReferences": {
-          "/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/Monad.Maybe.csproj": {
-            "projectPath": "/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/Monad.Maybe.csproj"
+          "/home/seymourpoler/Documents/code/GitHub/Monads/src/Monad.Maybe/Monad.Maybe.csproj": {
+            "projectPath": "/home/seymourpoler/Documents/code/GitHub/Monads/src/Monad.Maybe/Monad.Maybe.csproj"
           }
         }
       }

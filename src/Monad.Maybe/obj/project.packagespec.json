@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/Monad.Maybe.csproj",
+    "projectUniqueName": "/home/seymourpoler/Documents/code/GitHub/Monads/src/Monad.Maybe/Monad.Maybe.csproj",
     "projectName": "Monad.Maybe",
-    "projectPath": "/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/Monad.Maybe.csproj",
-    "outputPath": "/home/seymourpoler/Documents/code/dotnet/Monads/src/Monad.Maybe/obj/",
+    "projectPath": "/home/seymourpoler/Documents/code/GitHub/Monads/src/Monad.Maybe/Monad.Maybe.csproj",
+    "outputPath": "/home/seymourpoler/Documents/code/GitHub/Monads/src/Monad.Maybe/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/share/dotnet/sdk/NuGetFallbackFolder"
