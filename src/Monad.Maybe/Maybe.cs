@@ -61,7 +61,7 @@ namespace Monad.Maybe
             return Maybe<TResult>.None;
         }
 
-        public T IfNone(T result)
+        public T ValueOr(T result)
         {
             if (HasValue)
             {
@@ -71,7 +71,7 @@ namespace Monad.Maybe
             return result;
         }
 
-        public T IfNone(Func<T> function)
+        public T ValueOr(Func<T> function)
         {
             if (function is null)
             {

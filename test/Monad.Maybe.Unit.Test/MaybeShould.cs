@@ -141,7 +141,7 @@ namespace Monad.Maybe.Unit.Test
             const string value = "some value";
             var mayBe = Maybe<string>.Of(value);
 
-            var result = mayBe.IfNone("another value");
+            var result = mayBe.ValueOr("another value");
             
             result.ShouldBe(value);
         }
@@ -152,7 +152,7 @@ namespace Monad.Maybe.Unit.Test
             const string value = "some value";
             var mayBe = Maybe<string>.None;
 
-            var result = mayBe.IfNone(value);
+            var result = mayBe.ValueOr(value);
             
             result.ShouldBe(value);
         }
@@ -163,7 +163,7 @@ namespace Monad.Maybe.Unit.Test
             var mayBe = Maybe<string>.None;
             Func<string> function = null;
 
-            Action action = () => mayBe.IfNone(function);
+            Action action = () => mayBe.ValueOr(function);
 
             action.ShouldThrow<ArgumentNullException>();
         }
@@ -174,7 +174,7 @@ namespace Monad.Maybe.Unit.Test
             const string value = "some thing";
             var mayBe = Maybe<string>.Of(value);
 
-            var result = mayBe.IfNone(() => "another value");
+            var result = mayBe.ValueOr(() => "another value");
             
             result.ShouldBe(value);
         }
@@ -185,7 +185,7 @@ namespace Monad.Maybe.Unit.Test
             const string value = "some thing";
             var mayBe = Maybe<string>.None;
 
-            var result = mayBe.IfNone(() => value);
+            var result = mayBe.ValueOr(() => value);
             
             result.ShouldBe(value);
         }
