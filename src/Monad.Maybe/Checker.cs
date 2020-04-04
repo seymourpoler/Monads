@@ -6,7 +6,10 @@ namespace Monad.Maybe
     {
         public static void Null<TException, T>(T value)
         {
-            throw new NotImplementedException();
+            if (value is null)
+            {
+                throw new NotImplementedException();
+            }
         } 
     }
 }
