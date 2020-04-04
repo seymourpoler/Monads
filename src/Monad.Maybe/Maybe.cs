@@ -2,7 +2,7 @@ using System;
 
 namespace Monad.Maybe
 {
-    public class Maybe<T>
+    public class Maybe<T> : IMaybe<T>
     {
         private readonly T value;
 
