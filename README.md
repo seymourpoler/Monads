@@ -1,5 +1,6 @@
 # Monads
 [![Build Status](https://travis-ci.org/seymourpoler/Monads.svg?branch=master)](https://travis-ci.org/seymourpoler/Monads)
+
 An implementation of monads in csharp, with JetBrains Rider as IDE and Lubuntu as operating system
 
 # Monad.Mabe
