@@ -15,6 +15,7 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="src" t="Include">
         <e p="Monad.Maybe" t="IncludeRecursive">
+          <e p="Checker.cs" t="Include" />
           <e p="IMaybe.cs" t="Include" />
           <e p="Maybe.cs" t="Include" />
           <e p="Monad.Maybe.csproj" t="IncludeRecursive" />
@@ -30,6 +31,7 @@
       </e>
       <e p="test" t="Include">
         <e p="Monad.Maybe.Unit.Test" t="IncludeRecursive">
+          <e p="CheckerShould.cs" t="Include" />
           <e p="MaybeShould.cs" t="Include" />
           <e p="Monad.Maybe.Unit.Test.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
