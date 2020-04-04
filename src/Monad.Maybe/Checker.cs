@@ -4,11 +4,11 @@ namespace Monad.Maybe
 {
     public class Checker
     {
-        public static void Null<TException, T>(T value)
+        public static void Null<TException, T>(T value) where TException: Exception
         {
             if (value is null)
             {
-                throw new NotImplementedException();
+                throw (TException)Activator.CreateInstance(typeof(TException));
             }
         } 
     }
