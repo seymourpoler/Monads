@@ -3,7 +3,7 @@
 
 An implementation of monads in csharp, with JetBrains Rider as IDE and Lubuntu as operating system
 
-# Monad.Mabe
+# Monad.Maybe
 Very simple monad Maybe library written in c-sharp.
 
 Create Monad from:
