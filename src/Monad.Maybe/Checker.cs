@@ -2,7 +2,7 @@ using System;
 
 namespace Monad.Maybe
 {
-    public class Checker
+    public static class Checker
     {
         public static void Null<TException, T>(T value) where TException: Exception
         {
