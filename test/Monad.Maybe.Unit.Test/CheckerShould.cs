@@ -9,7 +9,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void throw_exception_when_is_null()
         {
-            Action action = () => Checker.Null<ArgumentNullException, string>(null);
+            Action action = () => Checker.Null<ArgumentNullException>(null);
 
             action.ShouldThrow<ArgumentNullException>();
         }
@@ -17,7 +17,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void do_nothing_when_is_not_null()
         {
-            Action action = () => Checker.Null<ArgumentNullException, string>("some value");
+            Action action = () => Checker.Null<ArgumentNullException>("some value");
 
             action.ShouldNotThrow();
         }

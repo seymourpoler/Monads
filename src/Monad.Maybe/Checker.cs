@@ -4,7 +4,7 @@ namespace Monad.Maybe
 {
     public static class Checker
     {
-        public static void Null<TException, T>(T value) where TException: Exception
+        public static void Null<TException>(object value) where TException: Exception
         {
             if (value is null)
             {
