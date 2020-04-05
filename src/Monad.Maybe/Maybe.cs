@@ -22,21 +22,17 @@ namespace Monad.Maybe
 
         public void IfHasValue(Action<T> action)
         {
-            if (action is null)
+            Checker.Null<ArgumentNullException>(action);
+            
+            if (HasValue)
             {
-                throw new ArgumentNullException();
-            }
-            if (HasValue){
                 action(value);
             }
         }
         
         public Maybe<TResult> Bind<TResult>(Func<T, TResult> function)
         {
-            if (function is null)
-            {
-                throw new ArgumentNullException();
-            }
+            Checker.Null<ArgumentNullException>(function);
 
             if (HasValue)
             {
@@ -49,10 +45,7 @@ namespace Monad.Maybe
 
         public Maybe<TResult> Bind<TResult>(Func<T, Maybe<TResult>> function)
         {
-            if (function is null)
-            {
-                throw new ArgumentNullException();
-            }
+            Checker.Null<ArgumentNullException>(function);
 
             if (HasValue)
             {
@@ -73,10 +66,7 @@ namespace Monad.Maybe
 
         public T ValueOr(Func<T> function)
         {
-            if (function is null)
-            {
-                throw new ArgumentNullException();
-            }
+            Checker.Null<ArgumentNullException>(function);
             
             if(HasValue){
                 return value;
