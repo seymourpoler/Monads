@@ -82,16 +82,7 @@ namespace Monad.Maybe.Unit.Test
             result.HasValue.ShouldBeFalse();
         }
         
-        [Fact]
-        public void bind_with_optional_when_has_no_value()
-        {
-            var mayBe = None<string>.Of(null);
-            
-            var result = mayBe.Bind(x =>  Maybe<User>.Of(new User()));
-
-            result.ShouldBeOfType<Maybe<User>>();
-            result.HasValue.ShouldBeFalse();
-        }
+        
         
         [Fact]
         public void throws_exception_when_function_with_maybe_is_null()

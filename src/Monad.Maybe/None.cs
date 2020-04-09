@@ -24,8 +24,7 @@ namespace Monad.Maybe
         public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
-            
-            throw new NotImplementedException();
+            return None<TResult>.Of(default);
         }
 
         public T ValueOr(T result)
