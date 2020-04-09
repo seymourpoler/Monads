@@ -99,5 +99,16 @@ namespace Monad.Maybe.Unit.Test
             
             result.ShouldBe(value);
         }
+        
+        [Fact]
+        public void return_parameter_as_value()
+        {
+            const string value = "some value";
+            var mayBe = None<string>.Of(null);
+    
+            var result = mayBe.ValueOr(value);
+            
+            result.ShouldBe(value);
+        }
     }
 }

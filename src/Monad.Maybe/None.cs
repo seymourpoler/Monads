@@ -30,7 +30,7 @@ namespace Monad.Maybe
 
         public T ValueOr(T result)
         {
-            throw new NotImplementedException();
+            return result;
         }
 
         public T ValueOr(Func<T> function)
