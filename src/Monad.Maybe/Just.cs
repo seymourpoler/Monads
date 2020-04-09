@@ -6,21 +6,22 @@ namespace Monad.Maybe
     {
         private T value;
 
+        public bool HasValue => true;
+        
         private Just(T value)
         {
             this.value = value;
         }
-
+        
         public static IMaybe<T> Of(T value)
         {
             return new Just<T>(value);
         }
 
-        public bool HasValue => true;
         public void IfHasValue(Action<T> action)
         {
             Checker.Null<ArgumentNullException>(action);
-            throw new NotImplementedException();
+            action.Invoke(value);
         }
 
         public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)

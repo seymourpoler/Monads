@@ -23,17 +23,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void execute_if_has_value()
-        {
-            var executed = false;
-            var mayBe = Maybe<string>.Of("some value");
-
-            mayBe.IfHasValue(x => executed = true);
-            
-            executed.ShouldBeTrue();
-        }
-        
-        [Fact]
         public void throws_exception_when_function_without_maybe_is_null()
         {
             var mayBe = Maybe<string>.Of("some value");
