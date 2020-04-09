@@ -88,5 +88,16 @@ namespace Monad.Maybe.Unit.Test
 
             action.ShouldThrow<ArgumentNullException>();
         }
+        
+        [Fact]
+        public void return_value_from_function()
+        {
+            const string value = "some thing";
+            var mayBe = None<string>.Of(null);
+
+            var result = mayBe.ValueOr(() => value);
+            
+            result.ShouldBe(value);
+        }
     }
 }

@@ -36,8 +36,8 @@ namespace Monad.Maybe
         public T ValueOr(Func<T> function)
         {
             Checker.Null<ArgumentNullException>(function);
-            
-            throw new NotImplementedException();
+
+            return function.Invoke();
         }
 
         public static IMaybe<T> Of(T value)

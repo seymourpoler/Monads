@@ -124,16 +124,5 @@ namespace Monad.Maybe.Unit.Test
             
             result.ShouldBe(value);
         }
-        
-        [Fact]
-        public void return_value_from_function_when_is_none()
-        {
-            const string value = "some thing";
-            var mayBe = Maybe<string>.None;
-
-            var result = mayBe.ValueOr(() => value);
-            
-            result.ShouldBe(value);
-        }
     }
 }
