@@ -77,5 +77,16 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<None<User>>();
             result.HasValue.ShouldBeFalse();
         }
+        
+        [Fact]
+        public void throw_exception_when_function_is_null()
+        {
+            var mayBe = None<string>.Of(null);
+            Func<string> function = null;
+
+            Action action = () => mayBe.ValueOr(function);
+
+            action.ShouldThrow<ArgumentNullException>();
+        }
     }
 }

@@ -115,17 +115,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void throw_exception_when_function_is_null()
-        {
-            var mayBe = Maybe<string>.None;
-            Func<string> function = null;
-
-            Action action = () => mayBe.ValueOr(function);
-
-            action.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Fact]
         public void return_value_when_is_not_none()
         {
             const string value = "some thing";
