@@ -1,7 +1,45 @@
+using System;
+
 namespace Monad.Maybe
 {
-    public class Just
+    public class Just<T> : IMaybe<T>
     {
-        
+        private T value;
+
+        private Just(T value)
+        {
+            this.value = value;
+        }
+
+        public static IMaybe<T> Of(T value)
+        {
+            return new Just<T>(value);
+        }
+
+        public bool HasValue => true;
+        public void IfHasValue(Action<T> action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T ValueOr(T result)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T ValueOr(Func<T> function)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

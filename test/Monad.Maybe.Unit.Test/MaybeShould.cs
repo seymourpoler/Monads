@@ -23,14 +23,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void return_true_when_has_value()
-        {
-            var mayBe = Maybe<string>.Of("some value");
-
-            mayBe.HasValue.ShouldBeTrue();
-        }
-
-        [Fact]
         public void throw_exception_when_if_has_value()
         {
             var mayBe = Maybe<string>.Of("some value");
