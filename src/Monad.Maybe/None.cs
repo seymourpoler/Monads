@@ -14,8 +14,6 @@ namespace Monad.Maybe
         public void IfHasValue(Action<T> action)
         {
             Checker.Null<ArgumentNullException>(action);
-            
-            throw new NotImplementedException();
         }
 
         public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)

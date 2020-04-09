@@ -23,5 +23,16 @@ namespace Monad.Maybe.Unit.Test
 
             action.ShouldThrow<ArgumentNullException>();
         }
+        
+        [Fact]
+        public void not_execute_if_has_no_value()
+        {
+            var executed = false;
+            var mayBe = None<string>.Of(null);
+
+            mayBe.IfHasValue(x => executed = true);
+            
+            executed.ShouldBeFalse();
+        }
     }
 }
