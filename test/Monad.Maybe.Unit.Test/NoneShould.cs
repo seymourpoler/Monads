@@ -66,5 +66,16 @@ namespace Monad.Maybe.Unit.Test
 
             action.ShouldThrow<ArgumentNullException>();
         }
+        
+        [Fact]
+        public void bind_without_optional_when_has_no_value()
+        {
+            var mayBe = None<string>.Of(null);
+            
+            var result = mayBe.Bind(x => new User());
+
+            result.ShouldBeOfType<None<User>>();
+            result.HasValue.ShouldBeFalse();
+        }
     }
 }
