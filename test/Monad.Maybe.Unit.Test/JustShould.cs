@@ -1,3 +1,4 @@
+using System;
 using Shouldly;
 using Xunit;
 
@@ -11,6 +12,16 @@ namespace Monad.Maybe.Unit.Test
             var mayBe = Just<string>.Of("some value");
 
             mayBe.HasValue.ShouldBeTrue();
+        }
+        
+        [Fact]
+        public void throw_exception_when_function_is_null_if_has_value()
+        {
+            var mayBe = Just<string>.Of("some value");
+
+            Action action = () => mayBe.IfHasValue(null);
+
+            action.ShouldThrow<ArgumentNullException>();
         }
     }
 }

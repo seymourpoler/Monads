@@ -22,15 +22,7 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<Maybe<string>>();
         }
 
-        [Fact]
-        public void throw_exception_when_if_has_value()
-        {
-            var mayBe = Maybe<string>.Of("some value");
-
-            Action action = () => mayBe.IfHasValue(null);
-
-            action.ShouldThrow<ArgumentNullException>();
-        }
+        
         
         [Fact]
         public void execute_if_has_value()
