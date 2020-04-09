@@ -9,7 +9,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void return_false_when_has_no_value()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
 
             mayBe.HasValue.ShouldBeFalse();
         }
@@ -17,7 +17,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void throw_exception_when_if_has_value()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
 
             Action action = () => mayBe.IfHasValue(null);
 
@@ -28,7 +28,7 @@ namespace Monad.Maybe.Unit.Test
         public void not_execute_if_has_no_value()
         {
             var executed = false;
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
 
             mayBe.IfHasValue(x => executed = true);
             
@@ -38,7 +38,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void throws_exception_when_function_with_maybe_is_null()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
             Func<string, IMaybe<bool>> function = null;
             
             Action action = () => { mayBe.Bind(function); };
@@ -49,7 +49,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void bind_with_optional_when_has_no_value()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
             
             var result = mayBe.Bind(x =>  Maybe<User>.Of(new User()));
 
@@ -60,7 +60,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void throws_exception_when_function_without_maybe_is_null()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
             Func<string, bool> function = null;
             Action action = () => { mayBe.Bind(function); };
 
@@ -70,7 +70,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void bind_without_optional_when_has_no_value()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
             
             var result = mayBe.Bind(x => new User());
 
@@ -81,7 +81,7 @@ namespace Monad.Maybe.Unit.Test
         [Fact]
         public void throw_exception_when_function_is_null()
         {
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
             Func<string> function = null;
 
             Action action = () => mayBe.ValueOr(function);
@@ -93,7 +93,7 @@ namespace Monad.Maybe.Unit.Test
         public void return_value_from_function()
         {
             const string value = "some thing";
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
 
             var result = mayBe.ValueOr(() => value);
             
@@ -104,7 +104,7 @@ namespace Monad.Maybe.Unit.Test
         public void return_parameter_as_value()
         {
             const string value = "some value";
-            var mayBe = None<string>.Of(null);
+            var mayBe = None<string>.Of();
     
             var result = mayBe.ValueOr(value);
             

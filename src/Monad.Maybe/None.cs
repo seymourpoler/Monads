@@ -19,13 +19,13 @@ namespace Monad.Maybe
         public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)
         {
             Checker.Null<ArgumentNullException>(function);
-            return None<TResult>.Of(default);
+            return None<TResult>.Of();
         }
 
         public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
-            return None<TResult>.Of(default);
+            return None<TResult>.Of();
         }
 
         public T ValueOr(T result)
@@ -40,7 +40,7 @@ namespace Monad.Maybe
             return function.Invoke();
         }
 
-        public static IMaybe<T> Of(T value)
+        public static IMaybe<T> Of()
         {
             return new None<T>();
         }
