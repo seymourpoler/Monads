@@ -17,6 +17,11 @@ namespace Monad.Maybe
         
         public static IMaybe<T> Of(T value)
         {
+            if (value is null)
+            {
+                return None<T>.Of();
+            }
+            
             return new Maybe<T>(value);
         }
 
