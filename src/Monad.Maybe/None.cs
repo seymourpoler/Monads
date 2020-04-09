@@ -13,6 +13,8 @@ namespace Monad.Maybe
 
         public void IfHasValue(Action<T> action)
         {
+            Checker.Null<ArgumentNullException>(action);
+            
             throw new NotImplementedException();
         }
 
