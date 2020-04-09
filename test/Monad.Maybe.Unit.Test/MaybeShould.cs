@@ -82,8 +82,6 @@ namespace Monad.Maybe.Unit.Test
             result.HasValue.ShouldBeFalse();
         }
         
-        
-        
         [Fact]
         public void throws_exception_when_function_with_maybe_is_null()
         {
