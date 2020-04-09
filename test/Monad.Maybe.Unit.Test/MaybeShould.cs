@@ -22,8 +22,6 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<Maybe<string>>();
         }
 
-        
-        
         [Fact]
         public void execute_if_has_value()
         {
