@@ -6,8 +6,8 @@ namespace Monad.Maybe
     {
         bool HasValue { get; }
         void IfHasValue(Action<T> action);
-        Maybe<TResult> Bind<TResult>(Func<T, TResult> function);
-        Maybe<TResult> Bind<TResult>(Func<T, Maybe<TResult>> function);
+        IMaybe<TResult> Bind<TResult>(Func<T, TResult> function);
+        IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function);
         T ValueOr(T result);
         T ValueOr(Func<T> function);
     }
