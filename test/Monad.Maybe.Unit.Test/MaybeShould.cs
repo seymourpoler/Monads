@@ -22,8 +22,6 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<Maybe<string>>();
         }
 
-        
-        
         [Fact]
         public void bind_without_optional_when_has_value()
         {
