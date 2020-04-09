@@ -31,14 +31,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void return_with_no_value()
-        {
-            var result = Maybe<string>.None;
-
-            result.HasValue.ShouldBeFalse();
-        }
-
-        [Fact]
         public void throw_exception_when_if_has_value()
         {
             var mayBe = Maybe<string>.Of("some value");
