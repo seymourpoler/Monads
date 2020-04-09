@@ -8,14 +8,14 @@ namespace Monad.Maybe
 
         public bool HasValue => value != null;
 
-        public static Maybe<T> None => new Maybe<T>(default(T));
+        public static IMaybe<T> None => new Maybe<T>(default(T));
 
         private Maybe(T value)
         {
             this.value = value;
         }
         
-        public static Maybe<T> Of(T value)
+        public static IMaybe<T> Of(T value)
         {
             return new Maybe<T>(value);
         }
@@ -30,7 +30,7 @@ namespace Monad.Maybe
             }
         }
         
-        public Maybe<TResult> Bind<TResult>(Func<T, TResult> function)
+        public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)
         {
             Checker.Null<ArgumentNullException>(function);
 
@@ -43,7 +43,7 @@ namespace Monad.Maybe
             return Maybe<TResult>.None;
         }
 
-        public Maybe<TResult> Bind<TResult>(Func<T, Maybe<TResult>> function)
+        public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
 
