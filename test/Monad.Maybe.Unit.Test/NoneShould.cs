@@ -56,5 +56,15 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<None<User>>();
             result.HasValue.ShouldBeFalse();
         }
+        
+        [Fact]
+        public void throws_exception_when_function_without_maybe_is_null()
+        {
+            var mayBe = None<string>.Of(null);
+            Func<string, bool> function = null;
+            Action action = () => { mayBe.Bind(function); };
+
+            action.ShouldThrow<ArgumentNullException>();
+        }
     }
 }
