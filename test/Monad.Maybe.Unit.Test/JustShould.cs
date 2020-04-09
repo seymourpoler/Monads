@@ -44,5 +44,15 @@ namespace Monad.Maybe.Unit.Test
 
             action.ShouldThrow<ArgumentNullException>();
         }
+        
+        [Fact]
+        public void bind_without_optional()
+        {
+            var mayBe = Just<string>.Of("some value");
+            
+            var result = mayBe.Bind(x => x.Contains("some"));
+    
+            result.ShouldBeOfType<Just<bool>>();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Monad.Maybe
                 return None<T>.Of();
             }
             
-            return new Maybe<T>(value);
+            return Just<T>.Of(value);
         }
 
         public void IfHasValue(Action<T> action)
