@@ -34,5 +34,16 @@ namespace Monad.Maybe.Unit.Test
             
             executed.ShouldBeFalse();
         }
+        
+        [Fact]
+        public void throws_exception_when_function_with_maybe_is_null()
+        {
+            var mayBe = None<string>.Of(null);
+            Func<string, IMaybe<bool>> function = null;
+            
+            Action action = () => { mayBe.Bind(function); };
+
+            action.ShouldThrow<ArgumentNullException>();
+        }
     }
 }

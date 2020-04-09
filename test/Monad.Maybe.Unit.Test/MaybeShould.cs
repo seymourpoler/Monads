@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Monad.Maybe.Unit.Test
 {
-    public class MaybeShould
+    public partial class MaybeShould
     {
         [Fact]
         public void return_maybe_with_null_from_static_factory()
@@ -82,7 +82,16 @@ namespace Monad.Maybe.Unit.Test
             result.HasValue.ShouldBeFalse();
         }
         
-        private class User{}
+        [Fact]
+        public void bind_with_optional_when_has_no_value()
+        {
+            var mayBe = None<string>.Of(null);
+            
+            var result = mayBe.Bind(x =>  Maybe<User>.Of(new User()));
+
+            result.ShouldBeOfType<Maybe<User>>();
+            result.HasValue.ShouldBeFalse();
+        }
         
         [Fact]
         public void throws_exception_when_function_with_maybe_is_null()
@@ -94,7 +103,7 @@ namespace Monad.Maybe.Unit.Test
 
             action.ShouldThrow<ArgumentNullException>();
         }
-        
+
         [Fact]
         public void bind_with_optional_when_has_value()
         {
@@ -105,17 +114,6 @@ namespace Monad.Maybe.Unit.Test
             result.ShouldBeOfType<Maybe<bool>>();
         }
         
-        [Fact]
-        public void bind_with_optional_when_has_no_value()
-        {
-            var mayBe = Maybe<string>.None;
-            
-            var result = mayBe.Bind(x =>  Maybe<User>.Of(new User()));
-
-            result.ShouldBeOfType<Maybe<User>>();
-            result.HasValue.ShouldBeFalse();
-        }
-
         [Fact]
         public void return_value_when_has_value()
         {
