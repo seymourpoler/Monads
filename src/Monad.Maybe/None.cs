@@ -8,7 +8,6 @@ namespace Monad.Maybe
 
         private None()
         {
-            
         }
 
         public void IfHasValue(Action<T> action)
