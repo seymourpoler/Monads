@@ -65,6 +65,16 @@ namespace Monad.Maybe.Unit.Test
             
             result.ShouldBe(value);
         }
+
+        [Fact]
+        public void throw_exception_when_fuction_is_null_in_returning_value()
+        {
+            var mayBe = Just<string>.Of("some thing");
+            Func<string> function = null;
+            Action action = () => mayBe.ValueOr(function);
+
+            action.ShouldThrow<ArgumentNullException>();
+        }
         
         [Fact]
         public void return_value_from_function()
