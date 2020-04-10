@@ -65,5 +65,16 @@ namespace Monad.Maybe.Unit.Test
             
             result.ShouldBe(value);
         }
+        
+        [Fact]
+        public void return_value_from_function()
+        {
+            const string value = "some thing";
+            var mayBe = Maybe<string>.Of(value);
+
+            var result = mayBe.ValueOr(() => "another value");
+            
+            result.ShouldBe(value);
+        }
     }
 }

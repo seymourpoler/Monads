@@ -21,16 +21,5 @@ namespace Monad.Maybe.Unit.Test
 
             result.ShouldBeOfType<Just<string>>();
         }
-
-        [Fact]
-        public void return_value_when_is_not_none()
-        {
-            const string value = "some thing";
-            var mayBe = Maybe<string>.Of(value);
-
-            var result = mayBe.ValueOr(() => "another value");
-            
-            result.ShouldBe(value);
-        }
     }
 }
