@@ -23,17 +23,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void return_value_when_has_value()
-        {
-            const string value = "some value";
-            var mayBe = Maybe<string>.Of(value);
-
-            var result = mayBe.ValueOr("another value");
-            
-            result.ShouldBe(value);
-        }
-
-        [Fact]
         public void return_value_when_is_not_none()
         {
             const string value = "some thing";

@@ -54,5 +54,16 @@ namespace Monad.Maybe.Unit.Test
     
             result.ShouldBeOfType<Just<bool>>();
         }
+        
+        [Fact]
+        public void return_value_when_has_value()
+        {
+            const string value = "some value";
+            var mayBe = Just<string>.Of(value);
+
+            var result = mayBe.ValueOr("another value");
+            
+            result.ShouldBe(value);
+        }
     }
 }
