@@ -33,7 +33,7 @@ namespace Monad.Maybe
         public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
-            throw new NotImplementedException();
+            return function.Invoke(value);
         }
 
         public T ValueOr(T result)

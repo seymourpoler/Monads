@@ -66,6 +66,16 @@ namespace Monad.Maybe.Unit.Test
         }
         
         [Fact]
+        public void return_value_in_bindding_with_function_with_Maybe()
+        {
+            var mayBe = Just<string>.Of("some value");
+            Func<string, IMaybe<bool>> function = (value) => Maybe<bool>.Of(value.Contains("some"));
+            var result = mayBe.Bind(function);
+
+            result.IfHasValue(value => value.ShouldBeTrue());
+        }
+        
+        [Fact]
         public void return_value_when_has_value()
         {
             const string value = "some value";
