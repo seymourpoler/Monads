@@ -36,7 +36,7 @@ namespace Monad.Maybe.Unit.Test
         }
         
         [Fact]
-        public void throws_exception_when_function_without_maybe_is_null()
+        public void throws_exception_when_function_with_value_is_null()
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, bool> function = null;
@@ -46,7 +46,7 @@ namespace Monad.Maybe.Unit.Test
         }
         
         [Fact]
-        public void bind_without_optional()
+        public void bind_with_value()
         {
             var mayBe = Just<string>.Of("some value");
             
