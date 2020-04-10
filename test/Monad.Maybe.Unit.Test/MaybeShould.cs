@@ -19,7 +19,7 @@ namespace Monad.Maybe.Unit.Test
         {
             var result = Maybe<string>.Of("some value");
 
-            result.ShouldBeOfType<Maybe<string>>();
+            result.ShouldBeOfType<Just<string>>();
         }
 
         [Fact]
