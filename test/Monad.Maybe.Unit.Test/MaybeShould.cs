@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Monad.Maybe.Unit.Test
 {
-    public partial class MaybeShould
+    public class MaybeShould
     {
         [Fact]
         public void return_maybe_with_null_from_static_factory()
