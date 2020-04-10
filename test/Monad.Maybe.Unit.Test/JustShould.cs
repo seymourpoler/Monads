@@ -40,6 +40,7 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, bool> function = null;
+            
             Action action = () => { mayBe.Bind(function); };
 
             action.ShouldThrow<ArgumentNullException>();
@@ -60,6 +61,7 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, IMaybe<bool>> function = null;
+            
             Action action = () => { mayBe.Bind(function); };
 
             action.ShouldThrow<ArgumentNullException>();
@@ -70,6 +72,7 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, IMaybe<bool>> function = (value) => Maybe<bool>.Of(value.Contains("some"));
+            
             var result = mayBe.Bind(function);
 
             result.IfHasValue(value => value.ShouldBeTrue());
@@ -91,6 +94,7 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = Just<string>.Of("some thing");
             Func<string> function = null;
+            
             Action action = () => mayBe.ValueOr(function);
 
             action.ShouldThrow<ArgumentNullException>();
