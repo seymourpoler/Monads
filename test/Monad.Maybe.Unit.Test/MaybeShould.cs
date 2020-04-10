@@ -23,16 +23,6 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void bind_with_optional_when_has_value()
-        {
-            var mayBe = Maybe<string>.Of("some value");
-            
-            var result = mayBe.Bind(x => Maybe<bool>.Of(x.Contains("some")));
-
-            result.ShouldBeOfType<Maybe<bool>>();
-        }
-        
-        [Fact]
         public void return_value_when_has_value()
         {
             const string value = "some value";
