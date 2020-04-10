@@ -36,7 +36,6 @@ namespace Monad.Maybe
         public T ValueOr(Func<T> function)
         {
             Checker.Null<ArgumentNullException>(function);
-
             return function.Invoke();
         }
 
