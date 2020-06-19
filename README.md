@@ -1,7 +1,7 @@
 # Monads
 [![Build Status](https://travis-ci.org/seymourpoler/Monads.svg?branch=master)](https://travis-ci.org/seymourpoler/Monads)
 
-An implementation of monads in csharp, with JetBrains Rider as IDE  <img src="jet.brains.rider.logo.png" width="24px" height="24px"> and Lubuntu 18.04 LTS as operating system
+An implementation of monads in csharp, in Lubuntu 18.04 LTS as operating system and with JetBrains Rider as IDE  <img src="jet.brains.rider.logo.png" width="30px" height="30px">
 
 # Monad.Maybe
 Very simple monad Maybe library written in c-sharp.
