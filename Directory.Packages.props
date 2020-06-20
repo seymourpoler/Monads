@@ -1,5 +1,0 @@
-<Project>
-  <ItemGroup>
-       <Import Project="build/dependencies.props" />
-  </ItemGroup>
-</Project>
