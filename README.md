@@ -14,12 +14,12 @@ Create Monad from:
 Return value or another element
 ```c#
 	var result = Maybe<string>.Of("Hello")
-			    .ValueOr(() => "bye");
+			    .match(() => "bye", null);
 ```
 
 Simple string tokenizer
 ```c#
 	var result = Maybe<string>.Of("Hello")
 			    .Bind<List<string>> (y => y.Split(' ').ToList<string>())
-			    .ValueOr(new List<string>());
+			    .Match(x => x, _ => new List<string>());
 ```
