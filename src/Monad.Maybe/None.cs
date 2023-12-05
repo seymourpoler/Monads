@@ -4,43 +4,23 @@ namespace Monad.Maybe
 {
     public class None<T> : IMaybe<T>
     {
-        public bool HasValue => false;
-
-        private None()
+        public static IMaybe<T> Of()
         {
-        }
-
-        public void IfHasValue(Action<T> action)
-        {
-            Checker.Null<ArgumentNullException>(action);
-        }
-
-        public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)
-        {
-            Checker.Null<ArgumentNullException>(function);
-            return None<TResult>.Of();
+            return new None<T>();
         }
 
         public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
+            
             return None<TResult>.Of();
         }
 
-        public T ValueOr(T result)
+        public TResult Match<TResult>(Func<T, TResult> functionWithValue, Func<TResult> functionWithoutValue)
         {
-            return result;
-        }
-
-        public T ValueOr(Func<T> function)
-        {
-            Checker.Null<ArgumentNullException>(function);
-            return function.Invoke();
-        }
-
-        public static IMaybe<T> Of()
-        {
-            return new None<T>();
+            Checker.Null<ArgumentNullException>(functionWithoutValue);
+            
+            return functionWithoutValue.Invoke();
         }
     }
 }

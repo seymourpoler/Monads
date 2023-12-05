@@ -7,41 +7,12 @@ namespace Monad.Maybe.Unit.Test
     public class NoneShould
     {
         [Fact]
-        public void return_false_when_has_no_value()
-        {
-            var mayBe = None<string>.Of();
-
-            mayBe.HasValue.ShouldBeFalse();
-        }
-        
-        [Fact]
-        public void throw_exception_when_if_has_value()
-        {
-            var mayBe = None<string>.Of();
-
-            Action action = () => mayBe.IfHasValue(null);
-
-            action.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
-        public void not_execute_if_has_no_value()
-        {
-            var executed = false;
-            var mayBe = None<string>.Of();
-
-            mayBe.IfHasValue(x => executed = true);
-            
-            executed.ShouldBeFalse();
-        }
-        
-        [Fact]
-        public void throws_exception_when_function_with_maybe_is_null()
+        public void throw_exception_when_binding_with_a_function_which_is_null()
         {
             var mayBe = None<string>.Of();
             Func<string, IMaybe<bool>> function = null;
             
-            Action action = () => { mayBe.Bind(function); };
+            var action = () => { mayBe.Bind(function); };
 
             action.ShouldThrow<ArgumentNullException>();
         }
@@ -51,18 +22,17 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = None<string>.Of();
             
-            var result = mayBe.Bind(x =>  Maybe<User>.Of(new User()));
+            var result = mayBe.Bind(x => None<User>.Of());
 
             result.ShouldBeOfType<None<User>>();
-            result.HasValue.ShouldBeFalse();
         }
         
         [Fact]
-        public void throws_exception_when_function_without_maybe_is_null()
+        public void throw_exception_when_function_without_maybe_is_null()
         {
             var mayBe = None<string>.Of();
-            Func<string, bool> function = null;
-            Action action = () => { mayBe.Bind(function); };
+            Func<string, IMaybe<bool>> function = null;
+            var action = () => { mayBe.Bind(function); };
 
             action.ShouldThrow<ArgumentNullException>();
         }
@@ -72,43 +42,21 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = None<string>.Of();
             
-            var result = mayBe.Bind(x => new User());
+            var result = mayBe.Bind(x => None<User>.Of());
 
             result.ShouldBeOfType<None<User>>();
-            result.HasValue.ShouldBeFalse();
         }
-        
+
         [Fact]
-        public void throw_exception_when_function_is_null()
+        public void throws_exception_when_matching_with_a_function_which_is_null()
         {
             var mayBe = None<string>.Of();
-            Func<string> function = null;
-
-            Action action = () => mayBe.ValueOr(function);
+            Func<string, string> functionWithValue = null;
+            Func<string> functionWithoutValue = null;
+            
+            var action = () => { mayBe.Match<string>(value => value, null); };
 
             action.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
-        public void return_value_from_function()
-        {
-            const string value = "some thing";
-            var mayBe = None<string>.Of();
-
-            var result = mayBe.ValueOr(() => value);
-            
-            result.ShouldBe(value);
-        }
-        
-        [Fact]
-        public void return_parameter_as_value()
-        {
-            const string value = "some value";
-            var mayBe = None<string>.Of();
-    
-            var result = mayBe.ValueOr(value);
-            
-            result.ShouldBe(value);
-        }
+        } 
     }
 }

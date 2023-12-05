@@ -5,8 +5,6 @@ namespace Monad.Maybe
     public class Just<T> : IMaybe<T>
     {
         private T value;
-
-        public bool HasValue => true;
         
         private Just(T value)
         {
@@ -18,33 +16,18 @@ namespace Monad.Maybe
             return new Just<T>(value);
         }
 
-        public void IfHasValue(Action<T> action)
-        {
-            Checker.Null<ArgumentNullException>(action);
-            action.Invoke(value);
-        }
-
-        public IMaybe<TResult> Bind<TResult>(Func<T, TResult> function)
-        {
-            Checker.Null<ArgumentNullException>(function);
-            return Maybe<TResult>.Of(function.Invoke(value));
-        }
-
         public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
         {
             Checker.Null<ArgumentNullException>(function);
+            
             return function.Invoke(value);
         }
 
-        public T ValueOr(T result)
+        public TResult Match<TResult>(Func<T, TResult> functionWithValue, Func<TResult> functionWithoutValue)
         {
-            return value;
-        }
+            Checker.Null<ArgumentNullException>(functionWithValue);
 
-        public T ValueOr(Func<T> function)
-        {
-            Checker.Null<ArgumentNullException>(function);
-            return value;
+            return functionWithValue.Invoke(value);
         }
     }
 }

@@ -7,41 +7,12 @@ namespace Monad.Maybe.Unit.Test
     public class JustShould
     {
         [Fact]
-        public void return_true_when_has_value()
+        public void throws_exception_when_function__is_null()
         {
             var mayBe = Just<string>.Of("some value");
-
-            mayBe.HasValue.ShouldBeTrue();
-        }
-        
-        [Fact]
-        public void throw_exception_when_function_is_null_if_has_value()
-        {
-            var mayBe = Just<string>.Of("some value");
-
-            Action action = () => mayBe.IfHasValue(null);
-
-            action.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
-        public void execute_if_has_value()
-        {
-            var executed = false;
-            var mayBe = Just<string>.Of("some value");
-
-            mayBe.IfHasValue(x => executed = true);
+            Func<string, IMaybe<bool>> function = null;
             
-            executed.ShouldBeTrue();
-        }
-        
-        [Fact]
-        public void throws_exception_when_function_with_value_is_null()
-        {
-            var mayBe = Just<string>.Of("some value");
-            Func<string, bool> function = null;
-            
-            Action action = () => { mayBe.Bind(function); };
+            var action = () => { mayBe.Bind(function); };
 
             action.ShouldThrow<ArgumentNullException>();
         }
@@ -51,64 +22,31 @@ namespace Monad.Maybe.Unit.Test
         {
             var mayBe = Just<string>.Of("some value");
             
-            var result = mayBe.Bind(x => x.Contains("some"));
+            var result = mayBe.Bind<bool>(x => Maybe<bool>.Of( x.Contains("some")));
     
             result.ShouldBeOfType<Just<bool>>();
         }
         
         [Fact]
-        public void throws_exception_when_function_with_Maybe_is_null()
+        public void throw_exception_when_matching_with_null_function()
         {
             var mayBe = Just<string>.Of("some value");
-            Func<string, IMaybe<bool>> function = null;
-            
-            Action action = () => { mayBe.Bind(function); };
+            Func<string, bool> function = null;
+
+            var action = () => { mayBe.Match(function, null); };
 
             action.ShouldThrow<ArgumentNullException>();
         }
         
         [Fact]
-        public void return_value_in_bindding_with_function_with_Maybe()
+        public void return_value_in_Matching()
         {
             var mayBe = Just<string>.Of("some value");
-            Func<string, IMaybe<bool>> function = (value) => Maybe<bool>.Of(value.Contains("some"));
+            Func<string, bool> function = (value) => value.Contains("some");
             
-            var result = mayBe.Bind(function);
+            var result = mayBe.Match(function, null);
 
-            result.IfHasValue(value => value.ShouldBeTrue());
-        }
-        
-        [Fact]
-        public void return_value_when_has_value()
-        {
-            const string value = "some value";
-            var mayBe = Just<string>.Of(value);
-
-            var result = mayBe.ValueOr("another value");
-            
-            result.ShouldBe(value);
-        }
-
-        [Fact]
-        public void throw_exception_when_fuction_is_null_in_returning_value()
-        {
-            var mayBe = Just<string>.Of("some thing");
-            Func<string> function = null;
-            
-            Action action = () => mayBe.ValueOr(function);
-
-            action.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
-        public void return_value_from_function()
-        {
-            const string value = "some thing";
-            var mayBe = Maybe<string>.Of(value);
-
-            var result = mayBe.ValueOr(() => "another value");
-            
-            result.ShouldBe(value);
+            result.ShouldBeTrue();
         }
     }
 }
