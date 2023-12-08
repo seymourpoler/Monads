@@ -2,7 +2,7 @@ using System;
 
 namespace Monad.Maybe
 {
-    public class None<T> : IMaybe<T>
+    public sealed record None<T> : IMaybe<T>
     {
         public static IMaybe<T> Of()
         {
