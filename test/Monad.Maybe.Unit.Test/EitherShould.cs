@@ -15,7 +15,7 @@ public class EitherShould
     }
     
     [Fact]
-    public void throw_exception_when_function_is_null()
+    public void throw_exception_when_binding_with_a_function_is_null()
     {
         var successEither = Either<Error, Success>.Success(new Success());
         Func<Success, Either<Error, OtherSuccess>> onSuccess = null;
@@ -27,7 +27,7 @@ public class EitherShould
     }
     
     [Fact]
-    public void return_other_either_with_error()
+    public void return_other_success_either_when_binding_with_a_function()
     {
         var successEither = Either<Error, Success>.Success(new Success());
         Func<Success, Either<Error, OtherSuccess>> onSuccess = _ => Either<Error, OtherSuccess>.Success(new OtherSuccess());
@@ -35,8 +35,9 @@ public class EitherShould
         var result = successEither.Bind(onSuccess);
 
         result.ShouldBeOfType<Either<Error, OtherSuccess>>();
-        
     }
+    
+    
     
     class OtherSuccess {}
     class Success {}
