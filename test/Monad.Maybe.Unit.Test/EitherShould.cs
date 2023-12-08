@@ -1,8 +1,45 @@
+using System;
+using Shouldly;
+using Xunit;
+
 namespace Monad.Maybe.Unit.Test;
 
 public class EitherShould
 {
+    [Fact]
+    public void create_success_either()
+    {
+        var result = Either<Error, Success>.Success(new Success());
+        
+        result.ShouldBeOfType<Either<Error, Success>>();
+    }
     
+    [Fact]
+    public void throw_exception_when_function_is_null()
+    {
+        var successEither = Either<Error, Success>.Success(new Success());
+        Func<Success, Either<Error, OtherSuccess>> onSuccess = null;
+        
+        var action = () => { successEither.Bind(onSuccess); };
+
+        action.ShouldThrow<ArgumentNullException>();
+        
+    }
     
+    [Fact]
+    public void return_other_either_with_error()
+    {
+        var successEither = Either<Error, Success>.Success(new Success());
+        Func<Success, Either<Error, OtherSuccess>> onSuccess = _ => Either<Error, OtherSuccess>.Success(new OtherSuccess());
+
+        var result = successEither.Bind(onSuccess);
+
+        result.ShouldBeOfType<Either<Error, OtherSuccess>>();
+        
+    }
+    
+    class OtherSuccess {}
+    class Success {}
+    class Error {}
     
 }
