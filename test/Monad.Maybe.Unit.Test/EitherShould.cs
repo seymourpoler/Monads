@@ -15,7 +15,7 @@ public class EitherShould
     }
     
     [Fact]
-    public void throw_exception_when_binding_with_a_function_is_null()
+    public void throw_exception_when_binding_a_success_either_with_a_function_is_null()
     {
         var successEither = Either<Error, Success>.Success(new Success());
         Func<Success, Either<Error, OtherSuccess>> onSuccess = null;
@@ -43,6 +43,29 @@ public class EitherShould
         var result = Either<Error, Success>.Error(new Error());
         
         result.ShouldBeOfType<Either<Error, Success>>();
+    }
+    
+    [Fact]
+    public void throw_exception_when_binding_an_error_either_with_a_function_is_null()
+    {
+        var errorEither = Either<Error, Success>.Error(new Error());
+        Func<Success, Either<Error, OtherSuccess>> onSuccess = null;
+        
+        var action = () => { errorEither.Bind(onSuccess); };
+
+        action.ShouldThrow<ArgumentNullException>();
+        
+    }
+    
+    [Fact]
+    public void return_error_either_when_binding_with_a_function()
+    {
+        var successEither = Either<Error, Success>.Error(new Error());
+        Func<Success, Either<Error, OtherSuccess>> onError = _ => Either<Error, OtherSuccess>.Success(new OtherSuccess());
+
+        var result = successEither.Bind(onError);
+
+        result.ShouldBeOfType<Either<Error, OtherSuccess>>();
     }
     
     
