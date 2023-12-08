@@ -23,11 +23,11 @@ namespace Monad.Maybe
             return function.Invoke(value);
         }
 
-        public TResult Match<TResult>(Func<T, TResult> functionWithValue, Func<TResult> functionWithoutValue)
+        public TResult Map<TResult>(Func<T, TResult> onWithValue, Func<TResult> onWithoutValue)
         {
-            Checker.Null<ArgumentNullException>(functionWithValue);
+            Checker.Null<ArgumentNullException>(onWithValue);
 
-            return functionWithValue.Invoke(value);
+            return onWithValue.Invoke(value);
         }
     }
 }

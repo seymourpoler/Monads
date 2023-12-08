@@ -28,23 +28,23 @@ namespace Monad.Maybe.Unit.Test
         }
         
         [Fact]
-        public void throw_exception_when_matching_with_null_function()
+        public void throw_exception_when_mapping_with_null_function()
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, bool> function = null;
 
-            var action = () => { mayBe.Match(function, null); };
+            var action = () => { mayBe.Map(function, null); };
 
             action.ShouldThrow<ArgumentNullException>();
         }
         
         [Fact]
-        public void return_value_in_Matching()
+        public void return_value_in_Mapping()
         {
             var mayBe = Just<string>.Of("some value");
             Func<string, bool> function = (value) => value.Contains("some");
             
-            var result = mayBe.Match(function, null);
+            var result = mayBe.Map(function, null);
 
             result.ShouldBeTrue();
         }

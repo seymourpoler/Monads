@@ -48,15 +48,25 @@ namespace Monad.Maybe.Unit.Test
         }
 
         [Fact]
-        public void throws_exception_when_matching_with_a_function_which_is_null()
+        public void throws_exception_when_mapping_with_a_function_which_is_null()
         {
             var mayBe = None<string>.Of();
             Func<string, string> functionWithValue = null;
             Func<string> functionWithoutValue = null;
             
-            var action = () => { mayBe.Match<string>(value => value, null); };
+            var action = () => { mayBe.Map<string>(value => value, null); };
 
             action.ShouldThrow<ArgumentNullException>();
+        } 
+        
+        [Fact]
+        public void mapping_with_a_function_which_is_null()
+        {
+            var mayBe = None<string>.Of();
+            
+            var result = mayBe.Map(null, () => true);
+
+            result.ShouldBe(true);
         } 
     }
 }

@@ -16,11 +16,11 @@ namespace Monad.Maybe
             return None<TResult>.Of();
         }
 
-        public TResult Match<TResult>(Func<T, TResult> functionWithValue, Func<TResult> functionWithoutValue)
+        public TResult Map<TResult>(Func<T, TResult> onWithValue, Func<TResult> onWithoutValue)
         {
-            Checker.Null<ArgumentNullException>(functionWithoutValue);
+            Checker.Null<ArgumentNullException>(onWithoutValue);
             
-            return functionWithoutValue.Invoke();
+            return onWithoutValue.Invoke();
         }
     }
 }
