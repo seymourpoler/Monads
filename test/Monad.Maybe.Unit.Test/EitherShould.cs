@@ -7,7 +7,7 @@ namespace Monad.Maybe.Unit.Test;
 public class EitherShould
 {
     [Fact]
-    public void create_success_either()
+    public void create_a_success_either()
     {
         var result = Either<Error, Success>.Success(new Success());
         
@@ -37,6 +37,13 @@ public class EitherShould
         result.ShouldBeOfType<Either<Error, OtherSuccess>>();
     }
     
+    [Fact]
+    public void create_an_error_either()
+    {
+        var result = Either<Error, Success>.Error(new Error());
+        
+        result.ShouldBeOfType<Either<Error, Success>>();
+    }
     
     
     class OtherSuccess {}
