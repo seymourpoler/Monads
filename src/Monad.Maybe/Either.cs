@@ -1,6 +1,6 @@
 namespace Monad.Maybe;
 
-public class Either<TError, TSuccess>
+public sealed class Either<TError, TSuccess>
 {
     
 }

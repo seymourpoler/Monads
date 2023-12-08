@@ -1,4 +1,5 @@
-namespace Monad.Maybe.Unit.Test
+namespace Monad.Maybe.Unit.Test;
+
+public class User
 {
-    public class User{}
 }

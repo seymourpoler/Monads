@@ -1,17 +1,16 @@
-namespace Monad.Maybe
+namespace Monad.Maybe;
+
+public static class Maybe<T>
 {
-    public static class Maybe<T>
+    private static IMaybe<T> None => None<T>.Of();
+
+    public static IMaybe<T> Of(T value)
     {
-        private static IMaybe<T> None => None<T>.Of();
-
-        public static IMaybe<T> Of(T value)
+        if (value is null)
         {
-            if (value is null)
-            {
-                return None<T>.Of();
-            }
-
-            return Just<T>.Of(value);
+            return None<T>.Of();
         }
+
+        return Just<T>.Of(value);
     }
 }

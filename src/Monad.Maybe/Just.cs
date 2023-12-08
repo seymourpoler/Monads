@@ -1,33 +1,32 @@
 using System;
 
-namespace Monad.Maybe
+namespace Monad.Maybe;
+
+public sealed record Just<T> : IMaybe<T>
 {
-    public sealed record Just<T> : IMaybe<T>
+    private T value;
+
+    private Just(T value)
     {
-        private T value;
-        
-        private Just(T value)
-        {
-            this.value = value;
-        }
-        
-        public static IMaybe<T> Of(T value)
-        {
-            return new Just<T>(value);
-        }
+        this.value = value;
+    }
 
-        public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
-        {
-            Checker.Null<ArgumentNullException>(function);
-            
-            return function.Invoke(value);
-        }
+    public static IMaybe<T> Of(T value)
+    {
+        return new Just<T>(value);
+    }
 
-        public TResult Map<TResult>(Func<T, TResult> onWithValue, Func<TResult> onWithoutValue)
-        {
-            Checker.Null<ArgumentNullException>(onWithValue);
+    public IMaybe<TResult> Bind<TResult>(Func<T, IMaybe<TResult>> function)
+    {
+        Checker.Null<ArgumentNullException>(function);
 
-            return onWithValue.Invoke(value);
-        }
+        return function.Invoke(value);
+    }
+
+    public TResult Map<TResult>(Func<T, TResult> onWithValue, Func<TResult> onWithoutValue)
+    {
+        Checker.Null<ArgumentNullException>(onWithValue);
+
+        return onWithValue.Invoke(value);
     }
 }

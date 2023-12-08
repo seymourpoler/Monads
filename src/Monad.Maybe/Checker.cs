@@ -1,8 +1,8 @@
 using System;
 
-namespace Monad.Maybe
-{
-    public static class Checker
+namespace Monad.Maybe;
+    
+public static class Checker
     {
         public static void Null<TException>(object value) where TException: Exception
         {
@@ -12,4 +12,3 @@ namespace Monad.Maybe
             }
         } 
     }
-}
