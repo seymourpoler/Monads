@@ -48,15 +48,16 @@ public class EitherShould
     {
         var successEither = Either<Error, Success>.Success(new Success());
         Func<Success, Thing> onSuccess = null;
+        Func<Error, Thing> onError = _ => new Thing();
         
-        var action = () => { successEither.Map(onSuccess); };
+        var action = () => { successEither.Map(onSuccess, onError); };
 
         action.ShouldThrow<ArgumentNullException>();
         
     }
     
     [Fact]
-    public void throw_exception_when_mapping_a_success_either_with_a_function()
+    public void map_a_success_either_with_a_function()
     {
         var successEither = Either<Error, Success>.Success(new Success());
         var wasExecuted = false;
@@ -66,9 +67,10 @@ public class EitherShould
             return new Thing();
         };
         
-        var result = successEither.Map(onSuccess);
+        var result = successEither.Map(onSuccess, null);
 
         result.ShouldBeOfType<Thing>();
+        wasExecuted.ShouldBeTrue();
 
     }
     
@@ -109,6 +111,36 @@ public class EitherShould
         wasExecuted.ShouldBeFalse();
     }
     
+    [Fact]
+    public void throw_exception_when_mapping_a_error_either_with_a_function_is_null()
+    {
+        var successEither = Either<Error, Success>.Error(new Error());
+        Func<Success, Thing> onSuccess = null;
+        Func<Error, Thing> onError = null;
+        
+        var action = () => { successEither.Map(onSuccess, onError); };
+
+        action.ShouldThrow<ArgumentNullException>();
+        
+    }
+    
+    [Fact]
+    public void map_an_error_either_with_a_function()
+    {
+        var successEither = Either<Error, Success>.Error(new Error());
+        var wasExecuted = false;
+        Func<Success, Thing> onSuccess = null;
+        Func<Error, Thing> onError = _ =>
+        {
+            wasExecuted = true;
+            return new Thing();
+        };
+        
+        var result = successEither.Map(onSuccess, onError);
+
+        result.ShouldBeOfType<Thing>();
+        wasExecuted.ShouldBeTrue();
+    }
     
     class OtherSuccess {}
     class Success {}
