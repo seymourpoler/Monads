@@ -44,6 +44,35 @@ public class EitherShould
     }
     
     [Fact]
+    public void throw_exception_when_mapping_a_success_either_with_a_function_is_null()
+    {
+        var successEither = Either<Error, Success>.Success(new Success());
+        Func<Success, Thing> onSuccess = null;
+        
+        var action = () => { successEither.Map(onSuccess); };
+
+        action.ShouldThrow<ArgumentNullException>();
+        
+    }
+    
+    [Fact]
+    public void throw_exception_when_mapping_a_success_either_with_a_function()
+    {
+        var successEither = Either<Error, Success>.Success(new Success());
+        var wasExecuted = false;
+        Func<Success, Thing> onSuccess = _ =>
+        {
+            wasExecuted = true;
+            return new Thing();
+        };
+        
+        var result = successEither.Map(onSuccess);
+
+        result.ShouldBeOfType<Thing>();
+
+    }
+    
+    [Fact]
     public void create_an_error_either()
     {
         var result = Either<Error, Success>.Error(new Error());
@@ -84,4 +113,5 @@ public class EitherShould
     class OtherSuccess {}
     class Success {}
     class Error {}
+    class Thing{}
 }

@@ -34,4 +34,11 @@ public sealed class Either<TError, TSuccess>
                 return Either<TError, TOtherSuccess>.Error(error);
         return onSuccess(success);
     }
+
+    public TResult Map<TResult>(Func<TSuccess,TResult> onSuccess)
+    {
+        Checker.Null<ArgumentNullException>(onSuccess);
+
+        return onSuccess(success);
+    }
 }
