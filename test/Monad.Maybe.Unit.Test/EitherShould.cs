@@ -72,5 +72,4 @@ public class EitherShould
     class OtherSuccess {}
     class Success {}
     class Error {}
-    
 }
