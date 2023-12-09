@@ -30,7 +30,8 @@ public sealed class Either<TError, TSuccess>
     public Either<TError, TOtherSuccess> Bind<TOtherSuccess>(Func<TSuccess,Either<TError, TOtherSuccess>> onSuccess)
     {
         Checker.Null<ArgumentNullException>(onSuccess);
-        
+        if(success is null) 
+                return Either<TError, TOtherSuccess>.Error(error);
         return onSuccess(success);
     }
 }

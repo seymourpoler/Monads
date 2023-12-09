@@ -30,11 +30,17 @@ public class EitherShould
     public void return_other_success_either_when_binding_with_a_function()
     {
         var successEither = Either<Error, Success>.Success(new Success());
-        Func<Success, Either<Error, OtherSuccess>> onSuccess = _ => Either<Error, OtherSuccess>.Success(new OtherSuccess());
+        var wasExecuted = false;
+        Func<Success, Either<Error, OtherSuccess>> onSuccess = _ =>
+        {
+            wasExecuted = true;
+            return Either<Error, OtherSuccess>.Success(new OtherSuccess());
+        };
 
         var result = successEither.Bind(onSuccess);
 
         result.ShouldBeOfType<Either<Error, OtherSuccess>>();
+        wasExecuted.ShouldBeTrue();
     }
     
     [Fact]
@@ -61,11 +67,17 @@ public class EitherShould
     public void return_error_either_when_binding_with_a_function()
     {
         var successEither = Either<Error, Success>.Error(new Error());
-        Func<Success, Either<Error, OtherSuccess>> onError = _ => Either<Error, OtherSuccess>.Success(new OtherSuccess());
+        var wasExecuted = false;
+        Func<Success, Either<Error, OtherSuccess>> onError = _ =>
+        {
+            wasExecuted = true;
+            return Either<Error, OtherSuccess>.Success(new OtherSuccess());
+        };
 
         var result = successEither.Bind(onError);
 
         result.ShouldBeOfType<Either<Error, OtherSuccess>>();
+        wasExecuted.ShouldBeFalse();
     }
     
     
